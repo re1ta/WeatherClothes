@@ -1,18 +1,19 @@
 package Project.WeatherClothes.Event.Dto;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.context.ApplicationEvent;
 
-import org.springframework.stereotype.Component;
 
-@Component("dtoEvent")
+@Getter
+@Setter
 public class DtoEvent extends ApplicationEvent {
 
-    private final String message = "Зарегестрирован новый пользователь!";
+    private String message;
     public DtoEvent(Object source) {
         super(source);
     }
 
-    public String getMessage(){
-        return message;
-    }
+
 }
