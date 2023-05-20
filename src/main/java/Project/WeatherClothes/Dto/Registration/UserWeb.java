@@ -1,7 +1,9 @@
 package Project.WeatherClothes.Dto.Registration;
 
-import Project.WeatherClothes.Anno.RegistrationConditions;
+import Project.WeatherClothes.Dto.Registration.Anno.RegistrationConditions;
 import lombok.Data;
+
+import javax.validation.constraints.NotBlank;
 
 @Data
 public class UserWeb {
@@ -11,4 +13,7 @@ public class UserWeb {
 
     @RegistrationConditions
     private String password;
+
+    @NotBlank
+    private String sex;
 }

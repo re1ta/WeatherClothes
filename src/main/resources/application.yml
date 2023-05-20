@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/WeatherClothes
+    username: ${USER}
+    password: ${PASSWORD}
+  jpa:
+    generate-ddl: true
+
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health

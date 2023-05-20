@@ -1,4 +1,4 @@
-package Project.WeatherClothes.impl;
+package Project.WeatherClothes.Service.impl;
 
 import Project.WeatherClothes.Dto.Registration.User;
 import Project.WeatherClothes.Dto.Registration.UserWeb;

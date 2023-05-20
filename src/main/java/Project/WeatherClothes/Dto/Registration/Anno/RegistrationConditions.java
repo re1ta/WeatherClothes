@@ -1,4 +1,4 @@
-package Project.WeatherClothes.Anno;
+package Project.WeatherClothes.Dto.Registration.Anno;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
