@@ -4,12 +4,13 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.lang.annotation.*;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @Constraint(validatedBy = {})
-@Min(5)
+@Size(min = 5)
 @NotBlank
 @Documented
 public @interface RegistrationConditions {

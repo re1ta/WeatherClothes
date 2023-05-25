@@ -1,4 +1,4 @@
-package Project.WeatherClothes.Dto.Registration.ExcHands;
+package Project.WeatherClothes.ExcHands;
 
 import Project.WeatherClothes.Dto.ExcDto.ErrorMessage;
 import org.springframework.http.HttpStatus;

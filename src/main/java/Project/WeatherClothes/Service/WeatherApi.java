@@ -1,4 +1,4 @@
-package Project.WeatherClothes.Service.impl;
+package Project.WeatherClothes.Service;
 
 import Project.WeatherClothes.Dto.ApiDto.CurrentWeather;
 

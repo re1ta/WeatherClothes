@@ -20,19 +20,22 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @Column(unique=true)
     private String username;
 
     private String password;
 
-    //true - мужчина, false - женщина
-    //трангендеров не будем учитывать, сори :)
-    private boolean sex;
+    @ElementCollection(targetClass = Sex.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_sex",
+            joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Sex> sex;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
-    private List<Role> roles;
+    private Set<Role> roles;
 
     public void setPassword(String password) {
         this.password = passwordEncoder().encode(password);

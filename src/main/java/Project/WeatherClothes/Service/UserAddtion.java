@@ -1,6 +1,5 @@
-package Project.WeatherClothes.Service.impl;
+package Project.WeatherClothes.Service;
 
-import Project.WeatherClothes.Dto.Registration.User;
 import Project.WeatherClothes.Dto.Registration.UserWeb;
 
 public interface UserAddtion {

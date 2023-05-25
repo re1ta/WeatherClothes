@@ -6,6 +6,9 @@ spring:
   jpa:
     generate-ddl: true
 
+api_host: ${API_HOST}
+api_key: ${API_KEY}
+
 management:
   endpoint:
     shutdown:
