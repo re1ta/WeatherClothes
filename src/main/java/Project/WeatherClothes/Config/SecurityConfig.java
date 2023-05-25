@@ -48,9 +48,13 @@ public class SecurityConfig {
                     .invalidateHttpSession(true)
                     .clearAuthentication(true)
                     .permitAll()
-                    .logoutUrl("/logout");;
+                    .logoutUrl("/logout");
 
         return http.build();
     }
 
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }

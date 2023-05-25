@@ -9,6 +9,10 @@ spring:
 api_host: ${API_HOST}
 api_key: ${API_KEY}
 
+mail_to: ${MAIL_TO}
+password_mail: ${PASSWORD_MAIL}
+mail_from: ${MAIL_FROM}
+
 management:
   endpoint:
     shutdown:

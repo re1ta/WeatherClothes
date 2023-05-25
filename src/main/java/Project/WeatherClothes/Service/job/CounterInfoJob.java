@@ -1,6 +1,7 @@
 package Project.WeatherClothes.Service.job;
 
-import Project.WeatherClothes.Aspect.CityAspect;
+import Project.WeatherClothes.Aspect.UserAspect;
+import Project.WeatherClothes.Service.EmailAddition;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -11,13 +12,12 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class CounterInfoJob {
 
-    private final CityAspect cityAspect;
+    private final UserAspect userAspect;
+    private final EmailAddition emailService;
 
-    // я хз почему, но через крону у меня не работает джоб, так что
-    // я сделал через fixedDelay(время 1 день)
     @Scheduled(fixedDelay = 86400000)
     public void countReg(){
-        log.info(cityAspect.getCount());
-        cityAspect.setCount(0);
+        emailService.sendEmailMessage(String.valueOf(userAspect.getCount()));
+        userAspect.setCount(0);
     }
 }

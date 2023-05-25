@@ -3,12 +3,9 @@ package Project.WeatherClothes.Dto.Registration;
 import javax.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.List;
 import java.util.Set;
+
+import static Project.WeatherClothes.Config.MainConfig.passwordEncoder;
 
 @Entity
 @Table(name = "users")
@@ -39,9 +36,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = passwordEncoder().encode(password);
-    }
-    @Bean
-    public static PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(10);
     }
 }

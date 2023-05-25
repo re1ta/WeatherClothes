@@ -1,7 +1,6 @@
 package Project.WeatherClothes.Aspect;
 
 import lombok.Data;
-import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component("city")
 @Log4j2
 @Data
-public class CityAspect {
+public class UserAspect {
 
     private int count;
 
@@ -21,7 +20,7 @@ public class CityAspect {
     public void pointcutCount() {
     }
 
-    @Before("pointcutCount()")
+    @After("pointcutCount()")
     public void counterUsersPerDay() {
         count++;
     }

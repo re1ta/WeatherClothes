@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Log4j2
 public class ClothesEvent implements EventPublisher {
 
-    private DtoEvent dtoEvent = new DtoEvent(this);
+    private final DtoEvent dtoEvent = new DtoEvent(this);
 
     @Override
     @EventListener(classes = {DtoEvent.class})
