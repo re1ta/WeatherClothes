@@ -58,7 +58,7 @@ public class ApiWeatherService implements WeatherApi {
     public String predictionWeather(CurrentWeather currentWeather,Principal principal) {
         Optional<User> userOptional =  userService.getUserByPrincipal(principal);
         User user = userOptional.get();
-        String sex = user.getSex().iterator().next().getSexName();
+        String sex = (user.getSex().iterator().next().getSexName().equals("SEX_MAN")) ? "MAN" : "WOMAN";
         String condition = currentWeather.getCurrent().getCondition().getText();
         int temp = currentWeather.getCurrent().getTemp_c();
         double wind = currentWeather.getCurrent().getWind_kph() / 3.6;
@@ -66,8 +66,7 @@ public class ApiWeatherService implements WeatherApi {
         if (condition.contains("дождь")){text.append("Возьмите с собой зонт или дождевик! ");}
         text.append("Как сейчас одеться: ");
         List<String> result = clothesRepo.getClothesDb(sex, temp, wind);
-        Set<String> set = new LinkedHashSet<>(result);
-        set.stream().map(x -> x + ", ").forEach(text::append);
+        result.stream().map(cloth -> cloth + ", ").forEach(text::append);
         text.deleteCharAt(text.length()-2);
         return text.toString();
     }

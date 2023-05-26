@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.Set;
 
-import static Project.WeatherClothes.Config.MainConfig.passwordEncoder;
 
 @Entity
 @Table(name = "users")
@@ -33,8 +32,4 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
-
-    public void setPassword(String password) {
-        this.password = passwordEncoder().encode(password);
-    }
 }

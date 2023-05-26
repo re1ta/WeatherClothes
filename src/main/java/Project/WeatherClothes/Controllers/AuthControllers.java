@@ -29,6 +29,7 @@ public class AuthControllers {
 
     @GetMapping("login")
     public void loginPage(Principal principal){
+        System.out.println(principal.getName());
         userDetailsService.loadUserByUsername(principal.getName());
     }
 

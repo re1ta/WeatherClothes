@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public interface ClothesRepo extends JpaRepository<Clothes, Integer> {
 
-    @Query("Select nameClothes FROM Clothes WHERE (sex = ?1 AND temp_c >= ?2 - 5 AND temp_c <= ?2 + 5 AND wind_m >= ?3 - 3.0 AND wind_m <= ?3 + 3.0)")
+    @Query(value = "SELECT name_clothes FROM Clothes JOIN Clothes_sex ON Clothes.id = Clothes_sex.clothes_id " +
+           "WHERE (sex = ?1 AND temp_min <= ?2 AND temp_max >= ?2 AND wind_min <= ?3 AND wind_max >= ?3)", nativeQuery = true)
     List<String> getClothesDb(String sex, int temp_c, double wind_m);
 }

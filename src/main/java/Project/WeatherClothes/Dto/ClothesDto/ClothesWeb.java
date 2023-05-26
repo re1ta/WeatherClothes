@@ -12,12 +12,17 @@ public class ClothesWeb {
     private String nameClothes;
 
     @NotNull
-    private int temp_c;
+    private int temp_min;
 
     @NotNull
-    private double wind_m;
+    private int temp_max;
+
+    @NotNull
+    private double wind_min;
+
+    @NotNull
+    private double wind_max;
 
     @NotBlank
     private String sex;
-
 }

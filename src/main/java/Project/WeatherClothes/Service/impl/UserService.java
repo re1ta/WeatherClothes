@@ -1,5 +1,6 @@
 package Project.WeatherClothes.Service.impl;
 
+import Project.WeatherClothes.Config.MainConfig;
 import Project.WeatherClothes.Dto.Registration.Role;
 import Project.WeatherClothes.Dto.Registration.Sex;
 import Project.WeatherClothes.Dto.Registration.User;
@@ -7,22 +8,19 @@ import Project.WeatherClothes.Dto.Registration.UserWeb;
 import Project.WeatherClothes.Event.EventPublisher;
 import Project.WeatherClothes.Service.UserAddtion;
 import Project.WeatherClothes.Service.details.UserInfoDetails;
-import Project.WeatherClothes.Service.exception.HasFoundException;
 import Project.WeatherClothes.Service.exception.NotFoundException;
 import Project.WeatherClothes.Dto.repos.UserRepo;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.dialect.PostgreSQL9Dialect;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.Principal;
-import java.sql.SQLException;
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,13 +32,15 @@ public class UserService implements UserDetailsService, UserAddtion {
     @Qualifier("regUser")
     private final EventPublisher regUser;
 
+    private final PasswordEncoder passwordEncoder;
+
     @Transactional
     @Override
     public void createUser(UserWeb userWeb) {
         regUser.publishEvent();
         User user = new User();
         user.setUsername(userWeb.getUsername());
-        user.setPassword(userWeb.getPassword());
+        user.setPassword(passwordEncoder.encode(userWeb.getPassword()));
         if(userWeb.getSex().equals("м")){user.setSex(Collections.singleton(Sex.MAN));}
         else {user.setSex(Collections.singleton(Sex.WOMAN));}
         user.setRoles(Collections.singleton(Role.USER));
